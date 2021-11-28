@@ -24,6 +24,7 @@ specifiers:
   nyc: ^15.1.0
   open-cli: ^6.0.1
   prettier: ^2.1.1
+  remeda: ^0.0.30
   standard-version: ^9.0.0
   ts-node: ^9.0.0
   tsutils: ^3.21.0
@@ -33,6 +34,7 @@ specifiers:
 dependencies:
   fp-ts: 2.11.5
   husky: 7.0.4
+  remeda: 0.0.30
 
 devDependencies:
   '@ava/typescript': 1.1.1
@@ -4579,6 +4581,10 @@ packages:
     dependencies:
       es6-error: 4.1.1
     dev: true
+
+  /remeda/0.0.30:
+    resolution: {integrity: sha512-ygbf/pXioUbbNOYSRFu6oUEa72HiIcsiS6CFuhWEwoIByoyNzzofm/cVgHEnfQVeSkwTGHceuDOEHo5hHFv9Uw==}
+    dev: false
 
   /repeat-string/1.6.1:
     resolution: {integrity: sha1-jcrkcOHIirwtYA//Sndihtp15jc=}

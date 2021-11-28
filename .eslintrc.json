@@ -7,8 +7,17 @@
   "env": {
     "es6": true
   },
-  "ignorePatterns": ["node_modules", "build", "coverage"],
-  "plugins": ["import", "eslint-comments", "sonarjs", "functional"],
+  "ignorePatterns": [
+    "node_modules",
+    "build",
+    "coverage"
+  ],
+  "plugins": [
+    "import",
+    "eslint-comments",
+    "sonarjs",
+    "functional"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:eslint-comments/recommended",
@@ -36,7 +45,7 @@
     ],
     "eslint-comments/no-unused-disable": "error",
     "import/order": [
-      "error",
+      "warn",
       {
         "newlines-between": "always",
         "alphabetize": {
@@ -45,7 +54,7 @@
       }
     ],
     "sort-imports": [
-      "error",
+      "warn",
       {
         "ignoreDeclarationSort": true,
         "ignoreCase": true
@@ -54,11 +63,14 @@
   },
   "overrides": [
     {
-      "files": ["*.spec.ts"],
+      "files": [
+        "*.spec.ts"
+      ],
       "rules": {
         "functional/no-expression-statement": "off",
         "functional/no-let": "off",
-        "functional/functional-parameters": "off"
+        "functional/functional-parameters": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     }
   ]

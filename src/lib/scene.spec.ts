@@ -1,38 +1,94 @@
 import test from 'ava';
+import { pick } from 'remeda';
 
-import { createEntityFactory } from './entity';
-import { addEntityToScene, Scene } from './scene';
+import { createEntityFactory, Entity } from './entity';
+import { addEntityToScene, elapseScene, initScene } from './scene';
+
+function defaultEntityFactory() {
+  let i = 0;
+  return createEntityFactory(() => (i++).toString());
+}
+
+const pickCoords = pick<Entity, 'x' | 'y'>(['x', 'y']); // TODO: move to entity/utils
+const pickVelocity = pick<Entity, 'vx' | 'vy'>(['vx', 'vy']); // TODO: move to entity/utils
 
 test('scene add entities', (t) => {
-  let i = 0;
-  const createEntity = createEntityFactory(() => (i++).toString());
+  const createEntity = defaultEntityFactory();
 
   const entity1 = createEntity({
     x: 10,
     y: 20,
+    vx: 0,
+    vy: 0,
   });
   const entity2 = createEntity({
     x: 13,
     y: 23,
+    vx: 0,
+    vy: 0,
   });
 
-  const sceneBefore: Scene = {
+  const sceneBefore = initScene({
     entities: [entity1],
-  };
-
+  });
   const sceneAfter = addEntityToScene(sceneBefore, [entity2]);
 
   // immutable
-  t.deepEqual(
-    sceneBefore,
-    { entities: [entity1] },
-    'initial scene was changed'
-  );
+  t.deepEqual(sceneBefore.entities, [entity1], 'initial scene was changed');
 
   // with a new entity
   t.deepEqual(
-    sceneAfter,
-    { entities: [entity1, entity2] },
-    'one entity adding failed'
+    sceneAfter.entities,
+    [entity1, entity2],
+    'one entity addition failed'
+  );
+});
+
+test('scene elapse', (t) => {
+  const createEntity = defaultEntityFactory();
+
+  const entity1 = createEntity({
+    x: 10,
+    y: 20,
+    vx: -5,
+    vy: 10,
+  });
+  const entity2 = createEntity({
+    x: 13,
+    y: 23,
+    vx: 2,
+    vy: 2,
+  });
+
+  const sceneBefore = initScene({
+    entities: [entity1, entity2],
+  });
+  const sceneAfter = elapseScene(sceneBefore, 100);
+
+  t.deepEqual(
+    sceneAfter.timestamp,
+    sceneBefore.timestamp + 100,
+    'scene timestamp did not update'
+  );
+
+  t.deepEqual(
+    sceneAfter.entities.map(pickCoords),
+    [
+      {
+        x: -490,
+        y: 1020,
+      },
+      {
+        x: 213,
+        y: 223,
+      },
+    ],
+    `scene entities's coordinates was updated incorrectly`
+  );
+
+  t.deepEqual(
+    sceneAfter.entities.map(pickVelocity),
+    sceneBefore.entities.map(pickVelocity),
+    `scene entities's velocities was updated but should not be changed`
   );
 });
