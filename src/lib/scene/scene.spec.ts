@@ -1,13 +1,31 @@
 import test from 'ava';
 
-import { createEntityFactory, pickCoordinates, pickVelocity } from '../entity';
+import {
+  createEntityFactory,
+  initEntity,
+  pickCoordinates,
+  pickVelocity,
+} from '../entity';
 
-import { addEntityToScene, elapseScene, initScene } from './scene';
+import {
+  addEntityToScene,
+  elapseScene,
+  initScene,
+  removeEntityFromScene,
+} from './scene';
 
 function defaultEntityFactory() {
   let i = 0;
   return createEntityFactory(() => (i++).toString());
 }
+
+test('scene init', (t) => {
+  const sceneEmpty = initScene({});
+  const sceneFilled = initScene({ entities: [initEntity({})], timestamp: 123 });
+
+  t.deepEqual(sceneEmpty, { entities: [], timestamp: 0 });
+  t.deepEqual(sceneFilled, { entities: [initEntity({})], timestamp: 123 });
+});
 
 test('scene add entities', (t) => {
   const createEntity = defaultEntityFactory();
@@ -39,6 +57,38 @@ test('scene add entities', (t) => {
     [entity1, entity2],
     'one entity addition failed'
   );
+});
+
+test('scene remove entities', (t) => {
+  const entity1 = initEntity({
+    id: 'the first one',
+    x: 10,
+    y: 20,
+    vx: 0,
+    vy: 0,
+  });
+  const entity2 = initEntity({
+    id: 'the second one',
+    x: 13,
+    y: 23,
+    vx: 0,
+    vy: 0,
+  });
+
+  const sceneBefore = initScene({
+    entities: [entity1, entity2],
+  });
+  const sceneAfter = removeEntityFromScene(sceneBefore, ['the second one']);
+
+  // immutable
+  t.deepEqual(
+    sceneBefore.entities,
+    [entity1, entity2],
+    'initial scene was changed'
+  );
+
+  // with a new entity
+  t.deepEqual(sceneAfter.entities, [entity1], 'entity deletion failed');
 });
 
 test('scene elapse', (t) => {
