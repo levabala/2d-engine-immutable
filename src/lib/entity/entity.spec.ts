@@ -5,6 +5,13 @@ import { pickCoordinates, pickVelocity } from './entity.utils';
 
 const ENTITY_VELOCITY_WAS_CHANGES_MESSAGE = 'entity velocity was changed';
 
+test('pick utils', (t) => {
+  const entity = initEntity({ x: 1, y: 2, vx: 3, vy: 4 });
+
+  t.deepEqual(pickCoordinates(entity), { x: 1, y: 2 });
+  t.deepEqual(pickVelocity(entity), { vx: 3, vy: 4 });
+});
+
 test('elapse entity zero without velocity', (t) => {
   const entityBefore = initEntity({});
   const entityAfter = elapseEntity(entityBefore, 100);
