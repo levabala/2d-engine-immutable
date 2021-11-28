@@ -1,16 +1,13 @@
 import test from 'ava';
-import { pick } from 'remeda';
 
-import { createEntityFactory, Entity } from './entity';
+import { createEntityFactory, pickCoordinates, pickVelocity } from '../entity';
+
 import { addEntityToScene, elapseScene, initScene } from './scene';
 
 function defaultEntityFactory() {
   let i = 0;
   return createEntityFactory(() => (i++).toString());
 }
-
-const pickCoords = pick<Entity, 'x' | 'y'>(['x', 'y']); // TODO: move to entity/utils
-const pickVelocity = pick<Entity, 'vx' | 'vy'>(['vx', 'vy']); // TODO: move to entity/utils
 
 test('scene add entities', (t) => {
   const createEntity = defaultEntityFactory();
@@ -71,8 +68,10 @@ test('scene elapse', (t) => {
     'scene timestamp did not update'
   );
 
+  t.log({ createEntityFactory, pickCoordinates, pickVelocity });
+
   t.deepEqual(
-    sceneAfter.entities.map(pickCoords),
+    sceneAfter.entities.map(pickCoordinates),
     [
       {
         x: -490,

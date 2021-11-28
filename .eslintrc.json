@@ -16,7 +16,8 @@
     "import",
     "eslint-comments",
     "sonarjs",
-    "functional"
+    "functional",
+    "sort-export-all"
   ],
   "extends": [
     "eslint:recommended",
@@ -28,7 +29,8 @@
     "plugin:sonarjs/recommended",
     "plugin:functional/external-recommended",
     "plugin:functional/recommended",
-    "plugin:functional/stylistic"
+    "plugin:functional/stylistic",
+    "plugin:sort-export-all/recommended"
   ],
   "globals": {
     "BigInt": true,
@@ -45,7 +47,7 @@
     ],
     "eslint-comments/no-unused-disable": "error",
     "import/order": [
-      "warn",
+      "error",
       {
         "newlines-between": "always",
         "alphabetize": {
@@ -54,7 +56,7 @@
       }
     ],
     "sort-imports": [
-      "warn",
+      "error",
       {
         "ignoreDeclarationSort": true,
         "ignoreCase": true

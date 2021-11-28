@@ -1,10 +1,7 @@
 import test from 'ava';
-import { pick } from 'remeda';
 
-import { elapseEntity, Entity, initEntity } from './entity';
-
-const pickCoords = pick<Entity, 'x' | 'y'>(['x', 'y']); // TODO: move to entity/utils
-const pickVelocity = pick<Entity, 'vx' | 'vy'>(['vx', 'vy']); // TODO: move to entity/utils
+import { elapseEntity, initEntity } from './entity';
+import { pickCoordinates, pickVelocity } from './entity.utils';
 
 const ENTITY_VELOCITY_WAS_CHANGES_MESSAGE = 'entity velocity was changed';
 
@@ -13,8 +10,8 @@ test('elapse entity zero without velocity', (t) => {
   const entityAfter = elapseEntity(entityBefore, 100);
 
   t.deepEqual(
-    pickCoords(entityAfter),
-    pickCoords(entityBefore),
+    pickCoordinates(entityAfter),
+    pickCoordinates(entityBefore),
     'entity coordinates was changed'
   );
 
@@ -30,7 +27,7 @@ test('elapse entity zero with velocity', (t) => {
   const entityAfter = elapseEntity(entityBefore, 100);
 
   t.deepEqual(
-    pickCoords(entityAfter),
+    pickCoordinates(entityAfter),
     {
       x: 1000,
       y: 500,
@@ -50,7 +47,7 @@ test('elapse entity non-zero with velocity', (t) => {
   const entityAfter = elapseEntity(entityBefore, 100);
 
   t.deepEqual(
-    pickCoords(entityAfter),
+    pickCoordinates(entityAfter),
     {
       x: 1005,
       y: 495,

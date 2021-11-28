@@ -1,4 +1,4 @@
-import { elapseEntity, Entity } from './entity';
+import { elapseEntity, Entity } from '../entity';
 
 export type Scene = {
   /**

@@ -1,8 +1,6 @@
-export type Entity = {
-  /**
-   * entity unique identifier
-   */
-  readonly id: string; // TODO: add nominal string typings
+import { Identified } from '../common';
+
+export type Coordinate = {
   /**
    * X axis coordinate
    */
@@ -11,6 +9,9 @@ export type Entity = {
    * Y axis coordinate
    */
   readonly y: number;
+};
+
+export type Velocity = {
   /**
    * velocity by X axis
    */
@@ -20,6 +21,8 @@ export type Entity = {
    */
   readonly vy: number;
 };
+
+export type Entity = Identified & Coordinate & Velocity;
 
 export function initEntity({
   id = 'none',
