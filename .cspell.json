@@ -21,12 +21,15 @@
     "sandboxed",
     "transpiled",
     "typedoc",
-    "untracked"
+    "untracked",
+    "sonarjs",
+    "pnpm"
   ],
   "flagWords": [],
   "ignorePaths": [
     "package.json",
     "package-lock.json",
+    "pnpm-lock.yaml",
     "yarn.lock",
     "tsconfig.json",
     "node_modules/**"

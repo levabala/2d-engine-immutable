@@ -7,25 +7,19 @@
   "env": {
     "es6": true
   },
-  "ignorePatterns": [
-    "node_modules",
-    "build",
-    "coverage"
-  ],
-  "plugins": [
-    "import",
-    "eslint-comments",
-    "functional"
-  ],
+  "ignorePatterns": ["node_modules", "build", "coverage"],
+  "plugins": ["import", "eslint-comments", "sonarjs", "functional"],
   "extends": [
     "eslint:recommended",
     "plugin:eslint-comments/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/typescript",
-    "plugin:functional/lite",
     "prettier",
     "prettier/@typescript-eslint",
-    "plugin:sonarjs/recommended"
+    "plugin:sonarjs/recommended",
+    "plugin:functional/external-recommended",
+    "plugin:functional/recommended",
+    "plugin:functional/stylistic"
   ],
   "globals": {
     "BigInt": true,
@@ -57,5 +51,15 @@
         "ignoreCase": true
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.spec.ts"],
+      "rules": {
+        "functional/no-expression-statement": "off",
+        "functional/no-let": "off",
+        "functional/functional-parameters": "off"
+      }
+    }
+  ]
 }
