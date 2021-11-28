@@ -1,4 +1,4 @@
-import { Identified } from '../common';
+import { Identified, OpaqueString } from '../common';
 
 export type Coordinate = {
   /**
@@ -22,10 +22,16 @@ export type Velocity = {
   readonly vy: number;
 };
 
-export type Entity = Identified & Coordinate & Velocity;
+export type ENTITY_ID_SYMBOL = 'EntityId';
+export type EntityId = OpaqueString<ENTITY_ID_SYMBOL>;
+export function EntityId(id: string): EntityId {
+  return id as unknown as EntityId;
+}
+
+export type Entity = Identified<ENTITY_ID_SYMBOL> & Coordinate & Velocity;
 
 export function initEntity({
-  id = 'none',
+  id = EntityId(''),
   x = 0,
   y = 0,
   vx = 0,
@@ -36,7 +42,7 @@ export function initEntity({
 
 // not fp..
 export function createEntityFactory(
-  idGenerator: () => string
+  idGenerator: () => EntityId
 ): (entity: Omit<Partial<Entity>, 'id'>) => Entity {
   return (entity) =>
     initEntity({

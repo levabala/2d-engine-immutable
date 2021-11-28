@@ -2,6 +2,7 @@ import test from 'ava';
 
 import {
   createEntityFactory,
+  EntityId,
   initEntity,
   pickCoordinates,
   pickVelocity,
@@ -16,7 +17,7 @@ import {
 
 function defaultEntityFactory() {
   let i = 0;
-  return createEntityFactory(() => (i++).toString());
+  return createEntityFactory(() => EntityId((i++).toString()));
 }
 
 test('scene init', (t) => {
@@ -61,14 +62,14 @@ test('scene add entities', (t) => {
 
 test('scene remove entities', (t) => {
   const entity1 = initEntity({
-    id: 'the first one',
+    id: EntityId('the first one'),
     x: 10,
     y: 20,
     vx: 0,
     vy: 0,
   });
   const entity2 = initEntity({
-    id: 'the second one',
+    id: EntityId('the second one'),
     x: 13,
     y: 23,
     vx: 0,
@@ -78,7 +79,9 @@ test('scene remove entities', (t) => {
   const sceneBefore = initScene({
     entities: [entity1, entity2],
   });
-  const sceneAfter = removeEntityFromScene(sceneBefore, ['the second one']);
+  const sceneAfter = removeEntityFromScene(sceneBefore, [
+    EntityId('the second one'),
+  ]);
 
   // immutable
   t.deepEqual(

@@ -1,4 +1,4 @@
-import { elapseEntity, Entity } from '../entity';
+import { elapseEntity, Entity, EntityId } from '../entity';
 
 export type Scene = {
   /**
@@ -30,7 +30,7 @@ export function addEntityToScene(
 
 export function removeEntityFromScene(
   scene: Scene,
-  entityIds: readonly string[]
+  entityIds: readonly EntityId[]
 ): Scene {
   return {
     ...scene,
