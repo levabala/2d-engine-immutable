@@ -1,7 +1,7 @@
 import test from 'ava';
 
 import { elapseEntity, initEntity } from './entity';
-import { pickCoordinates, pickVelocity } from './entity.utils';
+import { pickCoordinates, pickVelocity } from './entity-utils';
 
 const ENTITY_VELOCITY_WAS_CHANGES_MESSAGE = 'entity velocity was changed';
 
