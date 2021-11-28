@@ -61,7 +61,8 @@
         "ignoreDeclarationSort": true,
         "ignoreCase": true
       }
-    ]
+    ],
+    "sort-export-all/sort-export-all": "error"
   },
   "overrides": [
     {
