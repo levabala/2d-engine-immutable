@@ -1,26 +1,5 @@
 import { Identified, OpaqueString } from '../common';
-
-export type Coordinate = {
-  /**
-   * X axis coordinate
-   */
-  readonly x: number;
-  /**
-   * Y axis coordinate
-   */
-  readonly y: number;
-};
-
-export type Velocity = {
-  /**
-   * velocity by X axis
-   */
-  readonly vx: number;
-  /**
-   * velocity by Y axis
-   */
-  readonly vy: number;
-};
+import { Coordinate, Velocity } from '../physics';
 
 export type ENTITY_ID_SYMBOL = 'EntityId';
 export type EntityId = OpaqueString<ENTITY_ID_SYMBOL>;
