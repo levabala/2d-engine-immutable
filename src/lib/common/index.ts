@@ -1,3 +1,3 @@
-export * from "./Identified"
-export * from "./OpaqueString"
-export * from "./enum"
+export * from './Enum';
+export * from './Identified';
+export * from './OpaqueString';
