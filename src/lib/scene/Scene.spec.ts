@@ -13,7 +13,7 @@ import {
   elapseScene,
   initScene,
   removeEntityFromScene,
-} from './scene';
+} from './Scene';
 
 function defaultEntityFactory() {
   let i = 0;

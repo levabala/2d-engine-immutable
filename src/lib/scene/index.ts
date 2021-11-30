@@ -1,2 +1,2 @@
-export * from './scene';
-export * from './scene.spec';
+export * from './Scene';
+export * from './Scene.spec';
