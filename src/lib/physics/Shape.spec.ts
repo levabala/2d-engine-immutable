@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import { initShapeCircle, initShapeRectangle } from './Shape-utils';
+import { initShapeCircle, initShapeRectangle } from './Shape.utils';
 
 test('init areas', (t) => {
   const areaCircle = initShapeCircle({ radius: 3 });

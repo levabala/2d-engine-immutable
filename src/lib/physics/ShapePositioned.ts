@@ -1,6 +1,6 @@
 import { Coordinate, distanceBetweenCoordinates } from './Coordinate';
 import { Shape, ShapeCircle, ShapeKind, ShapeRectangle } from './Shape';
-import { calcRectangleCoordinates } from './ShapePositioned-utils';
+import { calcRectangleCoordinates } from './ShapePositioned.utils';
 
 export type ShapePositioned<S extends Shape = Shape> = S & Coordinate;
 
