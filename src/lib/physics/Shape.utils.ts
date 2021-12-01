@@ -1,8 +1,8 @@
 import { Shape, ShapeCircle, ShapeKind, ShapeRectangle } from './Shape';
 
-type WithoutAreaKind<A extends Shape> = Omit<A, 'kind'>;
+export type WithoutShapeKind<A extends Shape> = Omit<A, 'kind'>;
 
-type InitAreaFunc<A extends Shape> = (value: WithoutAreaKind<A>) => A;
+type InitAreaFunc<A extends Shape> = (value: WithoutShapeKind<A>) => A;
 
 export const initShapeCircle: InitAreaFunc<ShapeCircle> = (value) => ({
   kind: ShapeKind.Circle,
