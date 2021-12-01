@@ -5,7 +5,7 @@ import {
   hasIntersectionCircleCircle,
 } from './ShapePositioned';
 import {
-  calcRectangleCoordinates,
+  calcRectanglePositioned,
   initShapePositionedCircle,
 } from './ShapePositioned.utils';
 
@@ -43,7 +43,7 @@ test('init positioned rectangle', (t) => {
   });
 });
 
-test('rectangle positioned coordinates calculation', (t) => {
+test('rectangle positioned calculation', (t) => {
   const rect = initShapePositionedRectangle({
     x: 10,
     y: 20,
@@ -51,7 +51,7 @@ test('rectangle positioned coordinates calculation', (t) => {
     height: 20,
   });
 
-  const rectCoordinates = calcRectangleCoordinates(rect);
+  const rectCoordinates = calcRectanglePositioned(rect);
 
   t.deepEqual(rectCoordinates, {
     kind: 'Rectangle',

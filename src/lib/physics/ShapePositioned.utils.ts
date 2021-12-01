@@ -21,7 +21,7 @@ export const initShapePositionedRectangle: InitShapePositionedFunc<
   ...value,
 });
 
-export function calcRectangleCoordinates(
+export function calcRectanglePositioned(
   rect: ShapeRectangle & Coordinate
 ): ShapeRectanglePositioned {
   return {

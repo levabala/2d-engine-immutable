@@ -1,6 +1,6 @@
 import { Coordinate, distanceBetweenCoordinates } from './Coordinate';
 import { Shape, ShapeCircle, ShapeKind, ShapeRectangle } from './Shape';
-import { calcRectangleCoordinates } from './ShapePositioned.utils';
+import { calcRectanglePositioned } from './ShapePositioned.utils';
 
 export type ShapePositioned<S extends Shape = Shape> = S & Coordinate;
 
@@ -32,8 +32,8 @@ export const hasInteractionRectangleRectangle: HasIntersectionFunc<
   ShapeRectangle,
   ShapeRectangle
 > = (rect1, rect2) => {
-  const r1 = calcRectangleCoordinates(rect1);
-  const r2 = calcRectangleCoordinates(rect2);
+  const r1 = calcRectanglePositioned(rect1);
+  const r2 = calcRectanglePositioned(rect2);
 
   return !(
     r2.left > r1.right ||
@@ -44,3 +44,4 @@ export const hasInteractionRectangleRectangle: HasIntersectionFunc<
 };
 
 // TODO: circle-rectangle intersection
+// TODO: dynamic hasIntersection (auto match intersection func from shape kind)
