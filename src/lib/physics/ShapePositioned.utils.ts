@@ -25,7 +25,7 @@ export function calcRectanglePositioned(
   rect: ShapeRectangle & Coordinate
 ): ShapeRectanglePositioned {
   return {
-    kind: ShapeKind.Rectangle,
+    ...rect,
     top: rect.y - rect.height / 2,
     bottom: rect.y + rect.height / 2,
     left: rect.x - rect.width / 2,

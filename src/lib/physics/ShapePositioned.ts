@@ -1,11 +1,10 @@
 import { Coordinate, distanceBetweenCoordinates } from './Coordinate';
-import { Shape, ShapeCircle, ShapeKind, ShapeRectangle } from './Shape';
+import { Shape, ShapeCircle, ShapeRectangle } from './Shape';
 import { calcRectanglePositioned } from './ShapePositioned.utils';
 
 export type ShapePositioned<S extends Shape = Shape> = S & Coordinate;
 
-export type ShapeRectanglePositioned = {
-  readonly kind: ShapeKind['Rectangle'];
+export type ShapeRectanglePositioned = ShapeRectangle & {
   readonly top: number;
   readonly bottom: number;
   readonly left: number;
@@ -27,7 +26,6 @@ export const hasIntersectionCircleCircle: HasIntersectionFunc<
   return distance <= distanceMin;
 };
 
-// TODO: support already positioned rectangles
 export const hasInteractionRectangleRectangle: HasIntersectionFunc<
   ShapeRectangle,
   ShapeRectangle
