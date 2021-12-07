@@ -28,6 +28,17 @@ export const hasIntersectionCircleCircle: HasIntersectionFunc<
   return distance <= distanceMin;
 };
 
+export const hasInteractionRectangleRectangleBoxed: HasIntersectionFunc<
+  ShapeRectangleBoxed,
+  ShapeRectangleBoxed
+> = (rect1, rect2) =>
+  !(
+    rect2.left > rect1.right ||
+    rect2.right < rect1.left ||
+    rect2.top > rect1.bottom ||
+    rect2.bottom < rect1.top
+  );
+
 export const hasInteractionRectangleRectangle: HasIntersectionFunc<
   ShapeRectangle,
   ShapeRectangle
@@ -35,12 +46,7 @@ export const hasInteractionRectangleRectangle: HasIntersectionFunc<
   const r1 = calcRectangleBoxed(rect1);
   const r2 = calcRectangleBoxed(rect2);
 
-  return !(
-    r2.left > r1.right ||
-    r2.right < r1.left ||
-    r2.top > r1.bottom ||
-    r2.bottom < r1.top
-  );
+  return hasInteractionRectangleRectangleBoxed(r1, r2);
 };
 
 // TODO: circle-rectangle intersection
