@@ -1,15 +1,17 @@
 import { Coordinate, distanceBetweenCoordinates } from './Coordinate';
 import { Shape, ShapeCircle, ShapeRectangle } from './Shape';
-import { calcRectanglePositioned } from './ShapePositioned.utils';
+import { calcRectangleBoxed } from './ShapePositioned.utils';
 
 export type ShapePositioned<S extends Shape = Shape> = S & Coordinate;
 
-export type ShapeRectanglePositioned = ShapeRectangle & {
+export type ShapeBoxed = {
   readonly top: number;
   readonly bottom: number;
   readonly left: number;
   readonly right: number;
 };
+
+export type ShapeRectangleBoxed = ShapePositioned<ShapeRectangle> & ShapeBoxed;
 
 type HasIntersectionFunc<A1 extends Shape, A2 extends Shape> = (
   area1: ShapePositioned<A1>,
@@ -30,8 +32,8 @@ export const hasInteractionRectangleRectangle: HasIntersectionFunc<
   ShapeRectangle,
   ShapeRectangle
 > = (rect1, rect2) => {
-  const r1 = calcRectanglePositioned(rect1);
-  const r2 = calcRectanglePositioned(rect2);
+  const r1 = calcRectangleBoxed(rect1);
+  const r2 = calcRectangleBoxed(rect2);
 
   return !(
     r2.left > r1.right ||

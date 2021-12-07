@@ -1,7 +1,6 @@
-import { Coordinate } from './Coordinate';
 import { Shape, ShapeCircle, ShapeKind, ShapeRectangle } from './Shape';
 import { WithoutShapeKind } from './Shape.utils';
-import { ShapePositioned, ShapeRectanglePositioned } from './ShapePositioned';
+import { ShapePositioned, ShapeRectangleBoxed } from './ShapePositioned';
 
 type InitShapePositionedFunc<A extends Shape> = (
   value: WithoutShapeKind<ShapePositioned<A>>
@@ -21,9 +20,9 @@ export const initShapePositionedRectangle: InitShapePositionedFunc<
   ...value,
 });
 
-export function calcRectanglePositioned(
-  rect: ShapeRectangle & Coordinate
-): ShapeRectanglePositioned {
+export function calcRectangleBoxed(
+  rect: ShapePositioned<ShapeRectangle>
+): ShapeRectangleBoxed {
   return {
     ...rect,
     top: rect.y - rect.height / 2,
