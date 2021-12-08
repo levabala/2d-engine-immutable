@@ -121,8 +121,6 @@ test('scene elapse', (t) => {
     'scene timestamp did not update'
   );
 
-  t.log({ createEntityFactory, pickCoordinates, pickVelocity });
-
   t.deepEqual(
     sceneAfter.entities.map(pickCoordinates),
     [

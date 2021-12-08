@@ -1,5 +1,6 @@
 import { initEnum } from '../common';
 
+// TODO: such enum is not usable because no union enum collection is presented
 export const ShapeKindValues = ['Circle', 'Rectangle'] as const;
 export type ShapeKindValues = typeof ShapeKindValues;
 export const ShapeKind = initEnum(ShapeKindValues);
