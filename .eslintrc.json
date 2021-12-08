@@ -17,7 +17,8 @@
     "eslint-comments",
     "sonarjs",
     "functional",
-    "sort-export-all"
+    "sort-export-all",
+    "ava"
   ],
   "extends": [
     "eslint:recommended",
@@ -30,7 +31,8 @@
     "plugin:functional/external-recommended",
     "plugin:functional/recommended",
     "plugin:functional/stylistic",
-    "plugin:sort-export-all/recommended"
+    "plugin:sort-export-all/recommended",
+    "plugin:ava/recommended"
   ],
   "globals": {
     "BigInt": true,
@@ -73,6 +75,8 @@
         "functional/no-expression-statement": "off",
         "functional/no-let": "off",
         "functional/functional-parameters": "off",
+        "functional/prefer-readonly-type": "off",
+        "functional/no-conditional-statement": "off",
         "@typescript-eslint/explicit-function-return-type": "off"
       }
     }
