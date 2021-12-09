@@ -3,7 +3,7 @@ import test from 'ava';
 import { elapseEntity, initEntity } from './Entity';
 import { pickPosition, pickVelocity } from './Entity.utils';
 
-const ENTITY_VELOCITY_WAS_CHANGES_MESSAGE = 'entity velocity was changed';
+const ENTITY_VELOCITY_WAS_CHANGED_MESSAGE = 'entity velocity was changed';
 
 test('pick utils', (t) => {
   const entity = initEntity({ x: 1, y: 2, vx: 3, vy: 4 });
@@ -25,7 +25,7 @@ test('elapse entity zero without velocity', (t) => {
   t.deepEqual(
     pickVelocity(entityAfter),
     pickVelocity(entityBefore),
-    ENTITY_VELOCITY_WAS_CHANGES_MESSAGE
+    ENTITY_VELOCITY_WAS_CHANGED_MESSAGE
   );
 });
 
@@ -45,7 +45,7 @@ test('elapse entity zero with velocity', (t) => {
   t.deepEqual(
     pickVelocity(entityAfter),
     pickVelocity(entityBefore),
-    ENTITY_VELOCITY_WAS_CHANGES_MESSAGE
+    ENTITY_VELOCITY_WAS_CHANGED_MESSAGE
   );
 });
 
@@ -65,6 +65,6 @@ test('elapse entity non-zero with velocity', (t) => {
   t.deepEqual(
     pickVelocity(entityAfter),
     pickVelocity(entityBefore),
-    ENTITY_VELOCITY_WAS_CHANGES_MESSAGE
+    ENTITY_VELOCITY_WAS_CHANGED_MESSAGE
   );
 });
