@@ -11,6 +11,8 @@ export type Vector = {
   readonly dy: number;
 };
 
+export const VECTOR_ZERO: Vector = { dx: 0, dy: 0 };
+
 export type VectorPositioned = Vector & Point;
 
 export function initVectorTuple([dx, dy]: VectorTuple): Vector {

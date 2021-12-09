@@ -1,10 +1,7 @@
-export type Velocity = {
-  /**
-   * velocity by X axis
-   */
-  readonly vx: number;
-  /**
-   * velocity by Y axis
-   */
-  readonly vy: number;
+import { Vector } from './Vector';
+
+export type Velocity = Vector;
+
+export type WithVelocity = {
+  readonly velocity: Vector;
 };

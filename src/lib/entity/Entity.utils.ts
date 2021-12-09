@@ -1,6 +1,8 @@
 import { pick } from 'remeda';
 
-import { Point, Velocity } from '../physics';
+import { WithPoint, WithVelocity } from '../physics';
 
-export const pickPoint = pick<Point, keyof Point>(['x', 'y']);
-export const pickVelocity = pick<Velocity, keyof Velocity>(['vx', 'vy']);
+export const pickPosition = pick<WithPoint, keyof WithPoint>(['position']);
+export const pickVelocity = pick<WithVelocity, keyof WithVelocity>([
+  'velocity',
+]);
