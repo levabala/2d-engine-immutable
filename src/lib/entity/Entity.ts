@@ -18,17 +18,6 @@ export function initEntity({
   return { id, position, velocity };
 }
 
-// not fp..
-export function createEntityFactory(
-  idGenerator: () => EntityId
-): (entity: Omit<Partial<Entity>, 'id'>) => Entity {
-  return (entity) =>
-    initEntity({
-      ...entity,
-      id: idGenerator(),
-    });
-}
-
 /**
  * moves the entity through the time
  * @param entity entity to elapse
