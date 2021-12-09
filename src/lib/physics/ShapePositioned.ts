@@ -1,8 +1,8 @@
-import { Coordinate, distanceBetweenCoordinates } from './Coordinate';
+import { distanceBetweenPoints, Point } from './Point';
 import { Shape, ShapeCircle, ShapeRectangle } from './Shape';
 import { calcRectangleBoxed } from './ShapePositioned.utils';
 
-export type ShapePositioned<S extends Shape = Shape> = S & Coordinate;
+export type ShapePositioned<S extends Shape = Shape> = S & Point;
 
 export type ShapeBoxed = {
   readonly top: number;
@@ -22,7 +22,7 @@ export const hasIntersectionCircleCircle: HasIntersectionFunc<
   ShapeCircle,
   ShapeCircle
 > = (circle1, circle2) => {
-  const distance = distanceBetweenCoordinates(circle1, circle2);
+  const distance = distanceBetweenPoints(circle1, circle2);
   const distanceMin = circle1.radius + circle2.radius;
 
   return distance <= distanceMin;

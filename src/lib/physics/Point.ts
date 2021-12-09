@@ -1,4 +1,4 @@
-export type Coordinate = {
+export type Point = {
   /**
    * X axis coordinate
    */
@@ -9,10 +9,7 @@ export type Coordinate = {
   readonly y: number;
 };
 
-export function distanceBetweenCoordinates(
-  c1: Coordinate,
-  c2: Coordinate
-): number {
+export function distanceBetweenPoints(c1: Point, c2: Point): number {
   const dx = c2.x - c1.x;
   const dy = c2.y - c1.y;
 

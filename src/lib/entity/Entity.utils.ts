@@ -1,6 +1,6 @@
 import { pick } from 'remeda';
 
-import { Coordinate, Velocity } from '../physics';
+import { Point, Velocity } from '../physics';
 
-export const pickCoordinates = pick<Coordinate, keyof Coordinate>(['x', 'y']);
+export const pickPoint = pick<Point, keyof Point>(['x', 'y']);
 export const pickVelocity = pick<Velocity, keyof Velocity>(['vx', 'vy']);

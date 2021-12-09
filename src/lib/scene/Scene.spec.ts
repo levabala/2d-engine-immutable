@@ -4,7 +4,7 @@ import {
   createEntityFactory,
   EntityId,
   initEntity,
-  pickCoordinates,
+  pickPoint,
   pickVelocity,
 } from '../entity';
 
@@ -122,7 +122,7 @@ test('scene elapse', (t) => {
   );
 
   t.deepEqual(
-    sceneAfter.entities.map(pickCoordinates),
+    sceneAfter.entities.map(pickPoint),
     [
       {
         x: -490,

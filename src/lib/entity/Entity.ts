@@ -1,5 +1,5 @@
 import { Identified, OpaqueString } from '../common';
-import { Coordinate, Velocity } from '../physics';
+import { Point, Velocity } from '../physics';
 
 export type ENTITY_ID_SYMBOL = 'EntityId';
 export type EntityId = OpaqueString<ENTITY_ID_SYMBOL>;
@@ -7,7 +7,7 @@ export function EntityId(id: string): EntityId {
   return id as unknown as EntityId;
 }
 
-export type Entity = Identified<ENTITY_ID_SYMBOL> & Coordinate & Velocity;
+export type Entity = Identified<ENTITY_ID_SYMBOL> & Point & Velocity;
 
 export function initEntity({
   id = EntityId(''),

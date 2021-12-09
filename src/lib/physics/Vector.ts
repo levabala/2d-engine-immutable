@@ -2,7 +2,7 @@ import { Either, left, right } from 'fp-ts/lib/Either';
 
 import { initEnum } from '../common';
 
-import { Coordinate } from './Coordinate';
+import { Point } from './Point';
 
 export type VectorTuple = readonly [number, number];
 
@@ -11,7 +11,7 @@ export type Vector = {
   readonly dy: number;
 };
 
-export type VectorPositioned = Vector & Coordinate;
+export type VectorPositioned = Vector & Point;
 
 export function initVectorTuple([dx, dy]: VectorTuple): Vector {
   return {
@@ -20,10 +20,7 @@ export function initVectorTuple([dx, dy]: VectorTuple): Vector {
   };
 }
 
-export function initVectorPoints(
-  c1: Coordinate,
-  c2: Coordinate
-): VectorPositioned {
+export function initVectorPoints(c1: Point, c2: Point): VectorPositioned {
   return {
     x: c1.x,
     y: c1.y,
