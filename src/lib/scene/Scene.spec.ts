@@ -32,12 +32,16 @@ test('scene add entities', (t) => {
   const createEntity = defaultEntityFactory();
 
   const entity1 = createEntity({
-    position: { x: 10, y: 10 },
-    velocity: { dx: 0, dy: 0 },
+    x: 10,
+    y: 20,
+    vx: 0,
+    vy: 0,
   });
   const entity2 = createEntity({
-    position: { x: 13, y: 13 },
-    velocity: { dx: 0, dy: 0 },
+    x: 13,
+    y: 23,
+    vx: 0,
+    vy: 0,
   });
 
   const sceneBefore = initScene({
@@ -59,13 +63,17 @@ test('scene add entities', (t) => {
 test('scene remove entities', (t) => {
   const entity1 = initEntity({
     id: EntityId('the first one'),
-    position: { x: 10, y: 10 },
-    velocity: { dx: 0, dy: 0 },
+    x: 10,
+    y: 20,
+    vx: 0,
+    vy: 0,
   });
   const entity2 = initEntity({
     id: EntityId('the second one'),
-    position: { x: 13, y: 13 },
-    velocity: { dx: 0, dy: 0 },
+    x: 13,
+    y: 23,
+    vx: 0,
+    vy: 0,
   });
 
   const sceneBefore = initScene({
@@ -90,12 +98,16 @@ test('scene elapse', (t) => {
   const createEntity = defaultEntityFactory();
 
   const entity1 = createEntity({
-    position: { x: 10, y: 10 },
-    velocity: { dx: -5, dy: 10 },
+    x: 10,
+    y: 20,
+    vx: -5,
+    vy: 10,
   });
   const entity2 = createEntity({
-    position: { x: 13, y: 13 },
-    velocity: { dx: 2, dy: 2 },
+    x: 13,
+    y: 23,
+    vx: 2,
+    vy: 2,
   });
 
   const sceneBefore = initScene({
@@ -113,13 +125,12 @@ test('scene elapse', (t) => {
     sceneAfter.entities.map(pickPosition),
     [
       {
-        position: {
-          x: -490,
-          y: 1010,
-        },
+        x: -490,
+        y: 1020,
       },
       {
-        position: { x: 213, y: 213 },
+        x: 213,
+        y: 223,
       },
     ],
     `scene entities's coordinates was updated incorrectly`

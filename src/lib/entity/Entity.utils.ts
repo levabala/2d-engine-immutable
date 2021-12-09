@@ -1,13 +1,12 @@
 import { pick } from 'remeda';
 
-import { WithPoint, WithVelocity } from '../physics';
+import { Point, Velocity } from '../physics';
 
 import { Entity, EntityId, initEntity } from './Entity';
 
-export const pickPosition = pick<WithPoint, keyof WithPoint>(['position']);
-export const pickVelocity = pick<WithVelocity, keyof WithVelocity>([
-  'velocity',
-]);
+// TODO: universal picker for vector?
+export const pickPosition = pick<Point, keyof Point>(['x', 'y']);
+export const pickVelocity = pick<Velocity, keyof Velocity>(['vx', 'vy']);
 
 export function createEntityFactory(
   idGenerator: () => EntityId

@@ -1,19 +1,8 @@
-export type Point = {
-  /**
-   * X axis coordinate
-   */
-  readonly x: number;
-  /**
-   * Y axis coordinate
-   */
-  readonly y: number;
-};
+import { Vector } from './Vector';
+
+export type Point = Vector<''>; // vector without prefix
 
 export const POINT_ZERO: Point = { x: 0, y: 0 };
-
-export type WithPoint = {
-  readonly position: Point;
-};
 
 // TODO: implement for short init functions?
 // export type PointShort = readonly [number, number];

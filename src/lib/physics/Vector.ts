@@ -6,14 +6,17 @@ import { Point } from './Point';
 
 export type VectorTuple = readonly [number, number];
 
-export type Vector = {
-  readonly dx: number;
-  readonly dy: number;
+export const VECTOR_DEFAULT_PREFIX = 'd';
+export type VECTOR_DEFAULT_PREFIX = typeof VECTOR_DEFAULT_PREFIX;
+
+export type Vector<Prefix extends string = VECTOR_DEFAULT_PREFIX> = {
+  readonly [key in `${Prefix}x` | `${Prefix}y`]: number; // dx/dy by default
 };
 
 export const VECTOR_ZERO: Vector = { dx: 0, dy: 0 };
 
-export type VectorPositioned = Vector & Point;
+export type VectorPositioned<Prefix extends string = VECTOR_DEFAULT_PREFIX> =
+  Vector<Prefix> & Point;
 
 export function initVectorTuple([dx, dy]: VectorTuple): Vector {
   return {
